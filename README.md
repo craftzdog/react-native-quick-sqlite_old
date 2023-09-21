@@ -303,7 +303,7 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     if target.name == "react-native-quick-sqlite" then
       target.build_configurations.each do |config|
-        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', '<SQLITE_FLAGS>']
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'SQLITE_ENABLE_FTS5=1'
       end
     end
   end
